@@ -1,12 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:getx_sample_project/View/widgets/custom_button.dart';
+import 'package:getx_sample_project/View/widgets/custom_text_field.dart';
 import 'package:getx_sample_project/controllers/login_controller.dart';
 
 class LoginScreen extends StatelessWidget {
-   LoginScreen({super.key});
+  LoginScreen({Key? key}) : super(key: key);
+
   final LoginController controller = Get.put(LoginController());
+  final FocusNode _emailFocus = FocusNode(); // Create a FocusNode for the email TextField
+
+
   @override
   Widget build(BuildContext context) {
+    Future.delayed(Duration.zero, () {
+      FocusScope.of(context).requestFocus(_emailFocus);
+    });
+
    return Scaffold(
       body: SafeArea(
         child: Padding(
@@ -30,6 +40,7 @@ class LoginScreen extends StatelessWidget {
                       controller.validateEmail(value);
                     },
                     hintText: "Email",
+                    focusNode: _emailFocus,
                   ),
                   
                 Spacer(),
@@ -106,76 +117,6 @@ class CustomTextWithUnderline extends StatelessWidget {
 }
 
 
-class CustomTextField extends StatelessWidget {
-  final TextEditingController controller;
-  final ValueChanged<String> onChanged;
-  final String hintText;
-  final bool isObscureText;
-
-  CustomTextField({
-    required this.controller,
-    required this.onChanged,
-    required this.hintText,
-    this.isObscureText = false,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return TextField(
-      controller: controller,
-      onChanged: onChanged,
-      obscureText: isObscureText,
-      cursorColor: Colors.black,
-      decoration: InputDecoration(
-        focusedBorder: UnderlineInputBorder(
-          borderSide: BorderSide(color: Colors.black),
-        ),
-        suffixIcon: IconButton(
-          icon: Icon(Icons.clear),
-          onPressed: () => controller.clear(),
-        ),
-        hintText: hintText,
-      ),
-    );
-  }
-}
 
 
-class CustomElevatedButton extends StatelessWidget {
-  final bool isEnabled;
-  final VoidCallback onPressed;
-  final String label;
 
-  CustomElevatedButton({
-    required this.isEnabled,
-    required this.onPressed,
-    required this.label,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      child: ElevatedButton(
-        onPressed: isEnabled ? onPressed : null,
-        child: Text(
-          label,
-          style: TextStyle(color: Colors.white),
-        ),
-        style: ButtonStyle(
-          backgroundColor: MaterialStateProperty.all<Color>(
-            isEnabled ? Colors.black : Colors.grey,
-          ),
-          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-            RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(5.0),
-            ),
-          ),
-          minimumSize: MaterialStateProperty.all<Size>(
-            Size(double.infinity, 50.0),
-          ),
-        ),
-      ),
-    );
-  }
-}
