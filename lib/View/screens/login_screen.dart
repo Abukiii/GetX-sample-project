@@ -21,39 +21,44 @@ class LoginScreen extends StatelessWidget {
    return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding:  EdgeInsets.all(30.0),
+          padding:  EdgeInsets.fromLTRB(30.0,50,30,50),
           child: GetBuilder<LoginController>(
             init: LoginController(),
             builder: (controller) {
               return Column(
                 children: [
-                  Align(
-                    alignment: Alignment.topLeft, 
-                    child: Text(
-                      "Login",
-                      style: Theme.of(context).textTheme.displayLarge,
+                  Expanded(
+                    child: ListView(
+                      children: [
+                        Align(
+                      alignment: Alignment.topLeft, 
+                      child: Text(
+                        "Login",
+                        style: Theme.of(context).textTheme.displayLarge,
+                      ),
+                    ),
+                    SizedBox(height: 20,),
+                    Obx((){
+                      return CustomTextField(
+                      controller: controller.emailController, 
+                      onChanged: (value) {  
+                        controller.validateEmail(value);
+                      },
+                      hintText: "E-mail",
+                      focusNode: _emailFocus,
+                      suffix: controller.emailNotEmpty.value
+                            ? 
+                            IconButton(
+                                icon: Icon(FontAwesomeIcons.solidCircleXmark, color: Colors.grey),
+                                onPressed: () => controller.emailController.clear(),
+                              )
+                            : null,
+                    );
+                    }),
+                      ],
                     ),
                   ),
-                  SizedBox(height: 20,),
-                  Obx((){
-                    return CustomTextField(
-                    controller: controller.emailController, 
-                    onChanged: (value) {  
-                      controller.validateEmail(value);
-                    },
-                    hintText: "E-mail",
-                    focusNode: _emailFocus,
-                    suffix: controller.emailNotEmpty.value
-                          ? 
-                          IconButton(
-                              icon: Icon(FontAwesomeIcons.solidCircleXmark, color: Colors.grey),
-                              onPressed: () => controller.emailController.clear(),
-                            )
-                          : null,
-                  );
-                  }),
                   
-                Spacer(),
                  Padding(
                    padding: const EdgeInsets.all(8.0),
                    child: Container(
@@ -82,7 +87,7 @@ class LoginScreen extends StatelessWidget {
                    ),
                  ),
                  ),
-
+              
                   Obx(() {
                     // Use Obx to observe isEmailValid
                     return CustomElevatedButton(
