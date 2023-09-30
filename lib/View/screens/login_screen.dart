@@ -26,7 +26,8 @@ class LoginScreen extends StatelessWidget {
                   SizedBox(height: 20,),
                   CustomTextField(
                     controller: TextEditingController(), 
-                    onChanged: (value) {
+                    onChanged: (value) {  
+                      controller.validateEmail(value);
                     },
                     hintText: "Email",
                   ),
@@ -61,15 +62,18 @@ class LoginScreen extends StatelessWidget {
                  ),
                  ),
 
-                 
-                   CustomElevatedButton(
-                    isEnabled: true, //controller.isEmailValid.value,
+                  Obx(() {
+                    // Use Obx to observe isEmailValid
+                    return CustomElevatedButton(
+                    isEnabled: controller.isEmailValid.value,
                     onPressed: () {
-                     
+                      controller.login();
                     },
-                    label: "Enter Your Email Address",
-                  )
-                 
+                    label: controller.isEmailValid.value
+                        ? "Next"
+                        : "Enter Your Email Address",
+                  );
+                  }),
                 ],
               );
             },
