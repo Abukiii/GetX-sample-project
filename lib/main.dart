@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getx_sample_project/View/screens/login_screen.dart';
 import 'package:getx_sample_project/View/screens/splash_screen.dart';
+import 'package:getx_sample_project/core/bindings/login_binding.dart';
 import 'package:getx_sample_project/core/constants/theme_constants.dart';
 
 
@@ -21,8 +22,8 @@ class MyApp extends StatelessWidget {
 
       initialRoute: '/splash',
       getPages: [
-        GetPage(name: '/splash', page: () => SplashScreen()),
-        GetPage(name: '/login', page: () => LoginScreen()),
+        GetPage(name: '/splash', page: () => SplashScreen(), ),
+        GetPage(name: '/login', page: () => LoginScreen(), binding: LoginBinding()),
       ],
     );
   }

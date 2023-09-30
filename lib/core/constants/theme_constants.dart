@@ -9,6 +9,7 @@ class ThemeConstants {
     appBarTheme: const AppBarTheme(
     color: Colors.black, // Add the app bar color here
   ),
+  iconTheme: IconThemeData(color: Colors.grey),
     textTheme: TextTheme(
       displayLarge: GoogleFonts.poppins(
         fontSize: 28.0,
@@ -22,6 +23,10 @@ class ThemeConstants {
       ),
       bodyLarge: GoogleFonts.poppins(
         fontSize: 16.0,
+        color: Colors.black,
+      ),
+      bodyMedium: GoogleFonts.poppins(
+        fontSize: 12.0,
         color: Colors.black,
       ),
     ),
@@ -38,6 +43,7 @@ class ThemeConstants {
     appBarTheme: const AppBarTheme(
     color: Colors.white, // Add the app bar color here
   ),
+  iconTheme: IconThemeData(color: Colors.white),
     textTheme: TextTheme(
       displayLarge: GoogleFonts.poppins(
         fontSize: 28.0,
