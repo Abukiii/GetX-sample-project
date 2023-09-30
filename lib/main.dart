@@ -14,12 +14,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Your App',
+      title: 'Sample App',
       theme: ThemeConstants.lightTheme,
       darkTheme: ThemeConstants.darkTheme,
       themeMode: ThemeMode.light,
 
-      initialRoute: '/login',
+      initialRoute: '/splash',
       getPages: [
         GetPage(name: '/splash', page: () => SplashScreen()),
         GetPage(name: '/login', page: () => LoginScreen()),
