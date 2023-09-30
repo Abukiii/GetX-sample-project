@@ -1,27 +1,36 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class ThemeConstants {
   // Light Theme
   static final ThemeData lightTheme = ThemeData(
-     primaryColor: Colors.white,
+    primaryColor: Colors.white,
     scaffoldBackgroundColor: Colors.white,
+    appBarTheme: const AppBarTheme(
+    color: Colors.black, // Add the app bar color here
+  ),
+  iconTheme: IconThemeData(color: Colors.grey),
     textTheme: TextTheme(
-      displayLarge: TextStyle(
+      displayLarge: GoogleFonts.poppins(
         fontSize: 28.0,
         fontWeight: FontWeight.bold,
         color: Colors.black,
       ),
-      displayMedium: TextStyle(
+      displayMedium: GoogleFonts.poppins(
         fontSize: 24.0,
         fontWeight: FontWeight.bold,
         color: Colors.black,
       ),
-      bodyLarge: TextStyle(
+      bodyLarge: GoogleFonts.poppins(
         fontSize: 16.0,
         color: Colors.black,
       ),
+      bodyMedium: GoogleFonts.poppins(
+        fontSize: 12.0,
+        color: Colors.black,
+      ),
     ),
-    buttonTheme: ButtonThemeData(
+    buttonTheme: const ButtonThemeData(
       buttonColor: Colors.black,
       textTheme: ButtonTextTheme.primary,
     ),
@@ -29,25 +38,29 @@ class ThemeConstants {
 
   // Dark Theme
   static final ThemeData darkTheme = ThemeData(
-     primaryColor: Colors.black,
-    scaffoldBackgroundColor: Colors.black, 
+    primaryColor: Colors.black,
+    scaffoldBackgroundColor: Colors.black,
+    appBarTheme: const AppBarTheme(
+    color: Colors.white, // Add the app bar color here
+  ),
+  iconTheme: IconThemeData(color: Colors.white),
     textTheme: TextTheme(
-      headline1: TextStyle(
+      displayLarge: GoogleFonts.poppins(
         fontSize: 28.0,
         fontWeight: FontWeight.bold,
         color: Colors.white,
       ),
-      headline2: TextStyle(
+      displayMedium: GoogleFonts.poppins(
         fontSize: 24.0,
         fontWeight: FontWeight.bold,
         color: Colors.white,
       ),
-      bodyText1: TextStyle(
+      bodyLarge: GoogleFonts.poppins(
         fontSize: 16.0,
         color: Colors.white,
       ),
     ),
-    buttonTheme: ButtonThemeData(
+    buttonTheme: const ButtonThemeData(
       buttonColor: Colors.white,
       textTheme: ButtonTextTheme.primary,
     ),

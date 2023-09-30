@@ -31,6 +31,9 @@ dependencies:
   cupertino_icons: ^1.0.2
   flutter:
     sdk: flutter
+  flutter_launcher_icons: ^0.13.1
+  fluttericon: ^2.0.0
+  font_awesome_flutter: ^10.5.0
   get: ^4.6.6
   google_fonts: ^6.1.0
 
@@ -38,7 +41,18 @@ dev_dependencies:
   flutter_lints: ^2.0.0
   flutter_test:
     sdk: flutter
-
+flutter_icons:
+  android: true
+  ios: true
+  image_path_ios: "assets/images/Splash1.png"
+  image_path_android: "assets/images/Splash1.png"
+  adaptive_icon_background: "assets/images/Splash1.png"
+  adaptive_icon_foreground: "assets/images/Splash1.png"
+  web:
+    generate: true
+    image_path: "assets/images/Splash1.png"
+    background_color: "#hexcode"
+    theme_color: "#hexcode"
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 # The following section is specific to Flutter packages.

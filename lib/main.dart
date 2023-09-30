@@ -1,36 +1,31 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:getx_sample_project/View/screens/login_screen.dart';
+import 'package:getx_sample_project/View/screens/splash_screen.dart';
+import 'package:getx_sample_project/core/bindings/login_binding.dart';
+import 'package:getx_sample_project/core/constants/theme_constants.dart';
+
 
 void main() {
-  runApp(const MyApp());
+  runApp( MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: const MyHomePage(),
+    return GetMaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'Sample App',
+      theme: ThemeConstants.lightTheme,
+      darkTheme: ThemeConstants.darkTheme,
+      themeMode: ThemeMode.light,
+
+      initialRoute: '/splash',
+      getPages: [
+        GetPage(name: '/splash', page: () => SplashScreen(), ),
+        GetPage(name: '/login', page: () => LoginScreen(), binding: LoginBinding()),
+      ],
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key});
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  @override
-  Widget build(BuildContext context) {
-    return const Placeholder();
-  }
-}
