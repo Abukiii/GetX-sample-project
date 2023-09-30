@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:getx_sample_project/View/widgets/custom_button.dart';
 import 'package:getx_sample_project/View/widgets/custom_text_field.dart';
@@ -7,7 +8,7 @@ import 'package:getx_sample_project/controllers/login_controller.dart';
 class LoginScreen extends StatelessWidget {
   LoginScreen({Key? key}) : super(key: key);
 
-  final LoginController controller = Get.put(LoginController());
+  final  controller = Get.find<LoginController>();
   final FocusNode _emailFocus = FocusNode(); // Create a FocusNode for the email TextField
 
 
@@ -34,14 +35,23 @@ class LoginScreen extends StatelessWidget {
                     ),
                   ),
                   SizedBox(height: 20,),
-                  CustomTextField(
-                    controller: TextEditingController(), 
+                  Obx((){
+                    return CustomTextField(
+                    controller: controller.emailController, 
                     onChanged: (value) {  
                       controller.validateEmail(value);
                     },
-                    hintText: "Email",
+                    hintText: "E-mail",
                     focusNode: _emailFocus,
-                  ),
+                    suffix: controller.emailNotEmpty.value
+                          ? 
+                          IconButton(
+                              icon: Icon(FontAwesomeIcons.solidCircleXmark, color: Colors.grey),
+                              onPressed: () => controller.emailController.clear(),
+                            )
+                          : null,
+                  );
+                  }),
                   
                 Spacer(),
                  Padding(
@@ -82,7 +92,7 @@ class LoginScreen extends StatelessWidget {
                     },
                     label: controller.isEmailValid.value
                         ? "Next"
-                        : "Enter Your Email Address",
+                        : "Enter your email address",
                   );
                   }),
                 ],
